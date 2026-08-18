@@ -7,8 +7,8 @@
     <title>Cristhian Gabriel Alcarraz Rojas | Portafolio de Análisis de Datos</title>
       
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon-32x32.png">
-    <link rel="apple-touch-icon" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="favicon-32x32.png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,8 +39,12 @@
 
 <!-- NAVIGATION -->
 <nav>
-    <div class="container">
-        <ul>
+    <div class="container nav-container">
+        <!-- Botón Hamburguesa para Móviles -->
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul id="nav-menu">
             <li><a href="#about">Sobre Mí</a></li>
             <li><a href="#projects">Proyectos</a></li>
             <li><a href="#skills">Habilidades</a></li>
@@ -101,7 +105,7 @@
 </section>
 
 <!-- SKILLS SECTION -->
-<section id="skills" class="section">
+<section id="skills" class="section" style="background-color: var(--bg-white);">
     <div class="container">
         <h2>Stack Tecnológico</h2>
         <div class="skills-table">
@@ -189,6 +193,7 @@
     </div>
 </footer>
 
+<!-- Script Principal -->
 <script src="assets/js/main.js"></script>
 
 </body>
