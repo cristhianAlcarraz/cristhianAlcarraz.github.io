@@ -1,61 +1,42 @@
-# Cristhian ALcarraz - Data Analysis Portfolio
+# Cristhian Gabriel Alcarraz Rojas - Portafolio de Análisis de Datos
 
-Welcome! This repository contains the complete template for a professional, one-page data analysis portfolio website, hosted for free on GitHub Pages.
+¡Bienvenido! Este repositorio contiene el código fuente de mi portafolio profesional web, orientado al análisis de datos y Business Intelligence. El sitio está alojado de forma gratuita utilizando GitHub Pages.
 
-## About This Portfolio Template
+## 📊 Sobre este Portafolio
 
-This portfolio is designed to demonstrate skills in:
-- Data visualization and storytelling
-- Data modeling and analysis
-- Creating interactive, professional dashboards
-- Transforming complex data into actionable insights
+Este espacio ha sido diseñado para demostrar mis habilidades técnicas y analíticas en:
+- Visualización de datos y *storytelling* enfocado a negocios.
+- Modelado relacional, flujos ETL y limpieza de bases de datos.
+- Creación de *dashboards* interactivos y seguimiento de KPIs.
+- Transformación de datos complejos en *insights* accionables para la toma de decisiones estratégicas.
 
-## 🚀 Projects
+## 🚀 Proyectos Destacados
 
-This template is set up to showcase your best work. You can easily customize the project cards in the `index.html` file.
+En mi portafolio detallo los siguientes proyectos prácticos:
 
-### Project Title One
-*A brief description of your project, the tools used, and the key insights derived.*
+### 1. Dashboard de Ventas Anuales y Comparativa Interanual (Walmart)
+*Reporte integral multipágina para el análisis comercial de tiendas por ciudad, categorías y métodos de pago. Incluye margen bruto, brecha proyección-realidad y análisis de variación mensual/interanual (YoY).*
+- **Herramientas:** Power BI, DAX, Power Query (M).
 
-### Project Title Two
-*A brief description of your project, the tools used, and the key insights derived.*
+### 2. Modelo de Clasificación & Scoring de Riesgo Crediticio
+*Desarrollo de un flujo completo para el análisis exploratorio, tratamiento de valores atípicos y modelado predictivo, con el objetivo de evaluar y mitigar impagos crediticios.*
+- **Herramientas:** Python (Pandas, NumPy, Scikit-learn, Seaborn).
 
-### Project Title Three
-*A brief description of your project, the tools used, and the key insights derived.*
+## 🛠️ Stack Tecnológico y Habilidades
 
+- **Visualización & BI:** Power BI (Intermedio), DAX, Matplotlib, Seaborn, Diseño de Dashboards Ejecutivos.
+- **Programación & Análisis:** Python (Pandas, NumPy), Excel Avanzado (VBA/Macros), Orange Data Mining, Análisis Estadístico Descriptivo.
+- **Bases de Datos & ETL:** SQL Server (Intermedio), Power Query, Modelado Relacional (Star Schema), Automatización de Flujos ETL.
 
-## 🛠️ Skills
+## 🌐 Visita el Portafolio en Vivo
 
-Update the `index.html` file to reflect your personal technical skillset. The template is organized into key categories:
+Puedes explorar el portafolio interactivo y los enlaces a las documentaciones de mis proyectos directamente aquí:
 
-- **Data Visualization**: Power BI, Tableau, Matplotlib, etc.
-- **Data Analysis**: SQL, Python (Pandas), R, Excel, etc.
-- **Data Modeling**: Power Query, DAX, Star Schema Design, etc.
-- **Tools**: List any other relevant tools like Power BI Service, specific cloud platforms, etc.
+👉 **[https://cristhianAlcarraz.github.io](https://cristhianAlcarraz.github.io)**
 
-## 💡 How to Use This Template
+---
 
-Creating your own portfolio from this template is a simple, four-step process.
-
-### 1. Create a New Repository from this Template
-Click the green **"Use this template"** button at the top of this repository page, then select **"Create a new repository"**.
-
-### 2. Name Your Repository for GitHub Pages
-This is the most important step. To turn your portfolio into a live website, you **must** name your new repository in the following format:
-`your-username.github.io`
-*(Replace `your-username` with your actual GitHub username.)*
-
-### 3. Customize Your Portfolio
-Open the `index.html` file and begin personalizing it. The file contains helpful `<!--💡UPDATE: ... -->` comments to guide you on where to change:
-- Your name and title
-- Social media links
-- The "About Me" section
-- Your project titles, descriptions, and links
-- Your list of skills
-
-### 4. Add Your Files
-- Upload your profile photo and project preview images to the `assets/images/` folder.
-- Upload your CV (e.g., in PDF format) to the `assets/` folder.
-- Create your favicon and add it to the root folder.
-
-Once you commit your changes, your new portfolio website will be live at `https://your-username.github.io` within a few minutes!
+### 📬 Contacto
+- **LinkedIn:** [Cristhian Gabriel Alcarraz Rojas](https://www.linkedin.com/in/cristhian-gabriel-alcarraz-rojas-73a7802a9/)
+- **Email:** cristhiangabrielar02@gmail.com
+- **Educación:** Estudiante de Ingeniería Industrial (Tercio Superior) - Universidad Nacional Mayor de San Marcos (UNMSM).
