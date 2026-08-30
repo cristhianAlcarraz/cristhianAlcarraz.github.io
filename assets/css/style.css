@@ -221,7 +221,7 @@ nav ul li a:hover {
     border-bottom: 1px solid #eee;
 }
 
-/* Wrapper para el iframe de Power BI (mantiene relación de aspecto) */
+/* Wrapper para el iframe de Power BI (mantiene relación de aspecto y escala el reporte) */
 .powerbi-wrapper {
     position: relative;
     width: 100%;
@@ -232,12 +232,17 @@ nav ul li a:hover {
     background-color: var(--bg-light);
 }
 
-.powerbi-wrapper iframe {
+/* Este div interno se dibuja al tamaño REAL del reporte (ej. 1280x720)
+   y luego se reduce con transform:scale() calculado por JS (main.js) */
+.powerbi-scaler {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    transform-origin: top left;
+}
+
+.powerbi-scaler iframe {
+    display: block;
     border: none;
 }
 
