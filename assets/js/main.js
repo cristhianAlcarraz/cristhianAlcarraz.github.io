@@ -37,13 +37,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Ajuste inicial del reporte de Power BI
-    resizePowerBIReports();
+    initPowerBIScaling();
 });
 
 // Escalado responsivo del reporte de Power BI embebido
 // El reporte se dibuja a su tamaño REAL (REPORT_WIDTH x REPORT_HEIGHT)
 // y luego se reduce con CSS transform:scale() según el ancho disponible del contenedor.
-function resizePowerBIReports() {
+// Usamos ResizeObserver en vez de solo "load"/"resize" porque se dispara
+// en cuanto el elemento tiene un tamaño real, sin depender del orden de carga
+// de imágenes, fuentes u otros recursos que puedan cambiar el ancho de la card.
+function initPowerBIScaling() {
     const REPORT_WIDTH = 1280;  // Ancho nativo del reporte de Power BI
     const REPORT_HEIGHT = 720;  // Alto nativo del reporte de Power BI (16:9)
 
@@ -58,15 +61,23 @@ function resizePowerBIReports() {
         scaler.style.width = REPORT_WIDTH + 'px';
         scaler.style.height = REPORT_HEIGHT + 'px';
 
-        // Calculamos el factor de escala según el ancho disponible del wrapper
-        const scale = wrapper.clientWidth / REPORT_WIDTH;
-        scaler.style.transform = `scale(${scale})`;
+        const applyScale = () => {
+            const availableWidth = wrapper.clientWidth;
+            if (!availableWidth) return; // evita scale(0) si aún no tiene ancho
+            const scale = availableWidth / REPORT_WIDTH;
+            scaler.style.transform = `scale(${scale})`;
+        };
+
+        // Cálculo inicial inmediato
+        applyScale();
+
+        // Recalcular cada vez que cambie el tamaño real del wrapper
+        if (window.ResizeObserver) {
+            new ResizeObserver(applyScale).observe(wrapper);
+        } else {
+            // Fallback para navegadores muy antiguos sin ResizeObserver
+            window.addEventListener('resize', applyScale);
+            window.addEventListener('load', applyScale);
+        }
     });
 }
-
-// Recalcular al cambiar el tamaño de la ventana (ej. rotar el celular, redimensionar)
-window.addEventListener('resize', resizePowerBIReports);
-
-// Recalcular también al terminar de cargar todo (por si las fuentes/imágenes
-// cambian el ancho final de las cards antes de que el iframe esté listo)
-window.addEventListener('load', resizePowerBIReports);
