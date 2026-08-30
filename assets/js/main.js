@@ -1,4 +1,4 @@
-// Main navigation functionality
+// Main navigation and UI functionality
 document.addEventListener('DOMContentLoaded', function() {
     
     // Smooth scrolling for navigation links
@@ -38,4 +38,37 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // Escalar automáticamente el iframe de Power BI
+    initPowerBIScaling();
 });
+
+// Calcula dinámicamente el factor de escala según el ancho real de la tarjeta
+function initPowerBIScaling() {
+    const NATIVE_WIDTH = 1280; // Ancho base estándar del lienzo de Power BI
+
+    function scaleFrames() {
+        document.querySelectorAll('.powerbi-wrapper').forEach(wrapper => {
+            const iframe = wrapper.querySelector('iframe');
+            if (!iframe) return;
+
+            const containerWidth = wrapper.getBoundingClientRect().width;
+            if (containerWidth > 0) {
+                const scaleRatio = containerWidth / NATIVE_WIDTH;
+                iframe.style.transform = `scale(${scaleRatio})`;
+            }
+        });
+    }
+
+    // Ejecución inicial y en eventos de redimensionamiento
+    scaleFrames();
+    window.addEventListener('resize', scaleFrames);
+    window.addEventListener('load', scaleFrames);
+
+    // Detección de cambios de layout
+    if (window.ResizeObserver) {
+        document.querySelectorAll('.powerbi-wrapper').forEach(wrapper => {
+            new ResizeObserver(() => scaleFrames()).observe(wrapper);
+        });
+    }
+}
