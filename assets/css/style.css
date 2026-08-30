@@ -214,12 +214,12 @@ nav ul li a:hover {
     border-bottom: 1px solid #eee;
 }
 
-/* Wrapper calculado matemáticamente: 768px (alto) / 1280px (ancho) = 60% */
+/* Wrapper calculado matemáticamente: 760px (alto) / 1280px (ancho) = 59.375% */
 .powerbi-wrapper {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 60%;
+    padding-bottom: 59.375%; 
     overflow: hidden;
     border-bottom: 1px solid #eee;
     background-color: var(--bg-light);
@@ -230,7 +230,7 @@ nav ul li a:hover {
     top: 0;
     left: 0;
     width: 1280px;
-    height: 768px; /* 720px del dashboard + 48px de pestañas */
+    height: 760px; /* 720px del dashboard + 40px de pestañas */
     transform-origin: top left;
 }
 
