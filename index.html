@@ -40,7 +40,6 @@
 <!-- NAVIGATION -->
 <nav>
     <div class="container nav-container">
-        <!-- Botón Hamburguesa para Móviles -->
         <div class="menu-toggle" id="mobile-menu">
             <i class="fas fa-bars"></i>
         </div>
@@ -77,12 +76,14 @@
             <!-- Proyecto 1: Power BI Interactivo -->
             <div class="project-card">
                 <div class="powerbi-wrapper">
-                    <iframe 
-                        title="BI_Walmart_Sales_Profitability_Analytics_2023-2026" 
-                        src="https://app.powerbi.com/reportEmbed?reportId=7c2d0434-8e0f-40d4-addf-baad4827f0d7&autoAuth=true&ctid=717b9a79-1b91-41ab-a6f7-a579b46a9b41" 
-                        frameborder="0" 
-                        allowFullScreen="true">
-                    </iframe>
+                    <div class="powerbi-scaler">
+                        <iframe 
+                            title="BI_Walmart_Sales_Profitability_Analytics_2023-2026" 
+                            src="https://app.powerbi.com/reportEmbed?reportId=7c2d0434-8e0f-40d4-addf-baad4827f0d7&autoAuth=true&ctid=717b9a79-1b91-41ab-a6f7-a579b46a9b41" 
+                            frameborder="0" 
+                            allowFullScreen="true">
+                        </iframe>
+                    </div>
                 </div>
                 <div class="project-card-content">
                     <h3>Dashboard de Ventas Anuales y Comparativa Interanual</h3>
@@ -117,7 +118,6 @@
         <h2>Stack Tecnológico</h2>
         <div class="skills-table">
             
-            <!-- Columna 1: Business Intelligence & Visualización -->
             <div class="skill-column">
                 <div class="skill-header">
                     <i class="fas fa-chart-pie"></i>
@@ -131,7 +131,6 @@
                 </ul>
             </div>
 
-            <!-- Columna 2: Análisis & Programación -->
             <div class="skill-column">
                 <div class="skill-header">
                     <i class="fas fa-code"></i>
@@ -145,7 +144,6 @@
                 </ul>
             </div>
 
-            <!-- Columna 3: Bases de Datos & ETL -->
             <div class="skill-column">
                 <div class="skill-header">
                     <i class="fas fa-database"></i>
@@ -200,8 +198,6 @@
     </div>
 </footer>
 
-<!-- Script Principal -->
 <script src="assets/js/main.js"></script>
-
 </body>
 </html>
