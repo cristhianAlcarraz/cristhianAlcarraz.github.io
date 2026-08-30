@@ -1,36 +1,29 @@
-// Main navigation and UI functionality
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Smooth scrolling for navigation links
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
+                targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
 
-    // Mobile menu toggle
+    // Menú Móvil
     const mobileMenuButton = document.getElementById('mobile-menu');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('#nav-menu li a');
 
-    // Alternar menú al hacer clic en la hamburguesa
     if (mobileMenuButton && navMenu) {
         mobileMenuButton.addEventListener('click', function() {
             navMenu.classList.toggle('active');
         });
     }
 
-    // Cerrar el menú automáticamente al hacer clic en un enlace (útil para móviles)
     if (navLinks) {
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -39,36 +32,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Escalar automáticamente el iframe de Power BI
+    // Inicializar el escalado de Power BI
     initPowerBIScaling();
 });
 
-// Calcula dinámicamente el factor de escala según el ancho real de la tarjeta
+// Función centralizada y calculada para ajustar el zoom de Power BI
 function initPowerBIScaling() {
-    const NATIVE_WIDTH = 1280; // Ancho base estándar del lienzo de Power BI
+    const scalers = document.querySelectorAll('.powerbi-scaler');
+    if (scalers.length === 0) return;
 
-    function scaleFrames() {
-        document.querySelectorAll('.powerbi-wrapper').forEach(wrapper => {
-            const iframe = wrapper.querySelector('iframe');
-            if (!iframe) return;
-
-            const containerWidth = wrapper.getBoundingClientRect().width;
-            if (containerWidth > 0) {
-                const scaleRatio = containerWidth / NATIVE_WIDTH;
-                iframe.style.transform = `scale(${scaleRatio})`;
+    function applyScale() {
+        scalers.forEach(scaler => {
+            const wrapper = scaler.parentElement;
+            const wrapperWidth = wrapper.getBoundingClientRect().width;
+            
+            if (wrapperWidth > 0) {
+                // 1280 es el ancho fijo del iframe en el CSS
+                const scaleRatio = wrapperWidth / 1280;
+                scaler.style.transform = `scale(${scaleRatio})`;
             }
         });
     }
 
-    // Ejecución inicial y en eventos de redimensionamiento
-    scaleFrames();
-    window.addEventListener('resize', scaleFrames);
-    window.addEventListener('load', scaleFrames);
+    // Aplicar escala inicialmente
+    applyScale();
 
-    // Detección de cambios de layout
+    // Re-calcular escala cuando la ventana cambie de tamaño
+    window.addEventListener('resize', applyScale);
+
+    // Re-calcular si el layout cambia dinámicamente
     if (window.ResizeObserver) {
-        document.querySelectorAll('.powerbi-wrapper').forEach(wrapper => {
-            new ResizeObserver(() => scaleFrames()).observe(wrapper);
+        scalers.forEach(scaler => {
+            new ResizeObserver(applyScale).observe(scaler.parentElement);
         });
     }
 }
