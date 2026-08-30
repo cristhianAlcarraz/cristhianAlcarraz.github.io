@@ -11,7 +11,6 @@
     --transition-speed: 0.3s;
 }
 
-/* Reseteo General */
 * {
     margin: 0;
     padding: 0;
@@ -41,7 +40,6 @@ h1, h2, h3 {
     padding: 0 20px;
 }
 
-/* Botones */
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -69,7 +67,6 @@ h1, h2, h3 {
     background-color: #cbd5e1;
 }
 
-/* Header */
 header {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
     color: var(--bg-white);
@@ -103,7 +100,6 @@ header p {
     transform: translateY(-3px);
 }
 
-/* Navegación */
 nav {
     background-color: var(--bg-white);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -145,7 +141,6 @@ nav ul li a:hover {
     background-color: var(--bg-light);
 }
 
-/* Secciones Generales */
 .section {
     padding: 80px 0;
 }
@@ -166,7 +161,6 @@ nav ul li a:hover {
     margin: 15px auto 0;
 }
 
-/* Sobre Mí */
 .about-content {
     display: flex;
     align-items: center;
@@ -192,7 +186,6 @@ nav ul li a:hover {
     text-align: justify;
 }
 
-/* Proyectos (CSS Grid) */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -221,25 +214,31 @@ nav ul li a:hover {
     border-bottom: 1px solid #eee;
 }
 
-/* Wrapper para Power BI responsivo con escalado automático */
+/* Wrapper calculado matemáticamente: 768px (alto) / 1280px (ancho) = 60% */
 .powerbi-wrapper {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 56.25%; /* Relación 16:9 */
+    padding-bottom: 60%;
     overflow: hidden;
     border-bottom: 1px solid #eee;
     background-color: var(--bg-light);
 }
 
-.powerbi-wrapper iframe {
+.powerbi-scaler {
     position: absolute;
     top: 0;
     left: 0;
     width: 1280px;
-    height: 720px;
-    border: none;
+    height: 768px; /* 720px del dashboard + 48px de pestañas */
     transform-origin: top left;
+}
+
+.powerbi-scaler iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 .project-card-content {
@@ -269,7 +268,6 @@ nav ul li a:hover {
     flex: 1;
 }
 
-/* Habilidades (CSS Grid) */
 .skills-table {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -317,7 +315,7 @@ nav ul li a:hover {
 }
 
 .skill-list li::before {
-    content: '\f00c'; /* Check de FontAwesome */
+    content: '\f00c';
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     position: absolute;
@@ -325,7 +323,6 @@ nav ul li a:hover {
     color: var(--accent-blue);
 }
 
-/* Formulario de Contacto */
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
@@ -376,7 +373,6 @@ nav ul li a:hover {
     padding: 12px;
 }
 
-/* Footer */
 footer {
     background-color: var(--primary-dark);
     color: #94a3b8;
@@ -385,65 +381,17 @@ footer {
     font-size: 0.9rem;
 }
 
-/* MEDIA QUERIES (Celulares) */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
-    }
-
-    .nav-container {
-        justify-content: space-between;
-        width: 100%;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: var(--bg-white);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    }
-
-    nav ul.active {
-        display: flex;
-    }
-
-    nav ul li {
-        text-align: center;
-        border-bottom: 1px solid #f1f5f9;
-    }
-
-    nav ul li a {
-        padding: 15px;
-    }
-
-    .about-content {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-    }
-
-    .about-text p {
-        text-align: center;
-    }
-
-    .profile-photo {
-        width: 200px;
-        height: 200px;
-    }
-
-    .project-buttons {
-        flex-direction: column;
-    }
-
-    .contact-form {
-        padding: 20px;
-    }
+    header h1 { font-size: 2rem; }
+    .nav-container { justify-content: space-between; width: 100%; }
+    .menu-toggle { display: block; }
+    nav ul { display: none; flex-direction: column; width: 100%; background-color: var(--bg-white); position: absolute; top: 100%; left: 0; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+    nav ul.active { display: flex; }
+    nav ul li { text-align: center; border-bottom: 1px solid #f1f5f9; }
+    nav ul li a { padding: 15px; }
+    .about-content { flex-direction: column; text-align: center; padding: 20px; }
+    .about-text p { text-align: center; }
+    .profile-photo { width: 200px; height: 200px; }
+    .project-buttons { flex-direction: column; }
+    .contact-form { padding: 20px; }
 }
