@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Inicializar el escalado de Power BI
     initPowerBIScaling();
 });
 
@@ -39,9 +40,11 @@ function initPowerBIScaling() {
     if (scalers.length === 0) return;
 
     // Ancho y alto REALES del lienzo del reporte en Power BI.
-    // Cámbialos aquí si tu página en PBI Desktop no es 16:9 estándar.
-    const CANVAS_WIDTH = 1280;
-    const CANVAS_HEIGHT = 720;
+    // Deben coincidir con el tamaño de página configurado en
+    // Power BI Desktop (Visualizaciones > Formato de página > Tamaño de página)
+    // y con los valores usados en .powerbi-scaler dentro de style.css.
+    const CANVAS_WIDTH = 1720;
+    const CANVAS_HEIGHT = 1080;
 
     function applyScale() {
         scalers.forEach(scaler => {
@@ -58,16 +61,14 @@ function initPowerBIScaling() {
     // Aplicar escala inicialmente
     applyScale();
 
-    // Recalcular cuando TODO haya cargado (fuentes, imágenes, etc.)
-    // — esto es clave: las Google Fonts pueden cambiar el ancho del
-    // contenedor después del DOMContentLoaded.
+    // Recalcular cuando todo haya terminado de cargar (fuentes, imágenes, etc.),
+    // ya que estos pueden cambiar el ancho del contenedor después del DOMContentLoaded
     window.addEventListener('load', applyScale);
 
     // Re-calcular escala cuando la ventana cambie de tamaño
     window.addEventListener('resize', applyScale);
 
-    // Re-calcular si el layout cambia dinámicamente (ideal para
-    // capturar el reflow por fuentes/imágenes sin depender solo de 'load')
+    // Re-calcular si el layout cambia dinámicamente
     if (window.ResizeObserver) {
         scalers.forEach(scaler => {
             new ResizeObserver(applyScale).observe(scaler.parentElement);
