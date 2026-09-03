@@ -218,10 +218,11 @@ nav ul li a:hover {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 62.7907%; /* Ratio real del lienzo: 1080 / 1720 */
+    padding-bottom: 62.7907%; /* 1080 / 1720 */
     overflow: hidden;
     border-bottom: 1px solid #eee;
     background-color: var(--bg-light);
+    pointer-events: auto; /* Garantiza recepción de eventos */
 }
 
 .powerbi-scaler {
@@ -229,8 +230,9 @@ nav ul li a:hover {
     top: 0;
     left: 0;
     width: 1720px;
-    height: 1080px; /* Dimensiones reales del lienzo en Power BI */
+    height: 1080px;
     transform-origin: top left;
+    pointer-events: auto;
 }
 
 .powerbi-scaler iframe {
@@ -238,6 +240,7 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     border: none;
+    pointer-events: auto;
 }
 
 .project-card-content {
